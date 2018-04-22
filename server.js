@@ -13,7 +13,14 @@ app.listen(port, function (req, res) {
     console.log('Server is running at port: ', port);
 });
 
-app.post('/mail', function (req, res) {
+app.get('/', function (req, res) {
+    return res.status(200).json({
+        status: 200,
+        message: 'This API uses post method to send mails.'
+    });
+});
+
+app.post('/', function (req, res) {
     console.log(req.body);
     let transporter = nodeMailer.createTransport({
         host: 'mail.riderskatta.com',
