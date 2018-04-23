@@ -20,31 +20,31 @@ app.get('/', function (req, res) {
     });
 });
 
-app.post('/', function (req, res) {
-    console.log(req.body);
+app.get('/welcome', function (req, res) {
+    console.log(req.query);
     let transporter = nodeMailer.createTransport({
-        // host: 'mail.riderskatta.com',
-        // port: 25,
-        // secure: false,
-        // auth: {
-        //     user: 'support@riderskatta.com',
-        //     pass: '4br5xxz1q7n6'
-        // },
-        host: 'advisorsadda.com',
-        port: 465,
-        secure: true,
+        host: 'mail.riderskatta.com',
+        port: 25,
+        secure: false,
         auth: {
-            user: 'test@advisorsadda.com',
+            user: 'support@riderskatta.com',
             pass: '4br5xxz1q7n6'
         },
-        tls: {
-            rejectUnauthorized: false
-        }
+        // host: 'advisorsadda.com',
+        // port: 465,
+        // secure: true,
+        // auth: {
+        //     user: 'test@advisorsadda.com',
+        //     pass: '4br5xxz1q7n6'
+        // },
+        // tls: {
+        //     rejectUnauthorized: false
+        // }
     });
     let mailOptions = {
-        from: '"Riderskatta Support" <test@advisorsadda.com>', // sender address
-        to: req.body.to, // list of receivers
-        subject: req.body.subject, // Subject line
+        from: '"Riderskatta Support" <support@riderskatta.com>', // sender address
+        to: req.query.to, // list of receivers
+        subject: req.query.subject, // Subject line
         // text: req.body.body, // plain text body
         html: `
         <html xmlns="http://www.w3.org/1999/xhtml">
